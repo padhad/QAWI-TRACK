@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QAWI TRACK — Motor Repair Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 38 38"><path d="M8 20h6l3-8 5 15 3-7h5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="19" r="16" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <div>
+          <strong>QAWI<span>TRACK</span></strong>
+          <small>PAHAD MOTORSHOP</small>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">⌂</span><span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-page="customers">
+          <span class="nav-icon">♙</span><span>Customers</span>
+        </button>
+        <button class="nav-item" data-page="motorcycles">
+          <span class="nav-icon">◉</span><span>Motorcycles</span>
+        </button>
+        <button class="nav-item" data-page="repairs">
+          <span class="nav-icon">⌕</span><span>Repair Management</span>
+        </button>
+        <button class="nav-item" data-page="tracking">
+          <span class="nav-icon">⌖</span><span>Repair Tracking</span>
+        </button>
+        <button class="nav-item" data-page="inventory">
+          <span class="nav-icon">▦</span><span>Inventory</span>
+        </button>
+        <button class="nav-item" data-page="billing">
+          <span class="nav-icon">₱</span><span>Billing &amp; Payments</span>
+        </button>
+        <button class="nav-item" data-page="staff">
+          <span class="nav-icon">♧</span><span>Mechanics &amp; Staff</span>
+        </button>
+        <button class="nav-item" data-page="reports">
+          <span class="nav-icon">▥</span><span>Reports &amp; Analytics</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="nav-item" data-page="settings"><span class="nav-icon">⚙</span><span>System Settings</span></button>
+        <div class="user-card">
+          <div class="avatar">PA</div>
+          <div class="user-info"><strong>Pahad A.</strong><small>Administrator</small></div>
+          <button class="dots" aria-label="User menu">⋮</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Toggle menu">☰</button>
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input id="globalSearch" type="search" placeholder="Search tracking ID, customer, or motorcycle..." autocomplete="off">
+          <kbd>⌘ K</kbd>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="customerPortalButton" title="Customer portal">↗</button>
+          <button class="icon-button notification" title="Notifications">♢<i></i></button>
+        </div>
+      </header>
+
+      <div class="content" id="dashboardPage">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">FRIDAY, NOVEMBER 27</p>
+            <h1>Good morning, Pahad</h1>
+            <p>Here’s what’s happening at Pahad Motors today.</p>
+          </div>
+          <button class="primary-button" id="newRepairButton"><span>＋</span> New Repair</button>
+        </div>
+
+        <section class="stats-grid" aria-label="Summary statistics">
+          <article class="stat-card">
+            <div class="stat-icon orange">⌕</div>
+            <div class="stat-copy"><span>ACTIVE REPAIRS</span><strong>18</strong><small><b>+3</b> from yesterday</small></div>
+            <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon blue">✓</div>
+            <div class="stat-copy"><span>COMPLETED TODAY</span><strong>7</strong><small><b>+2</b> from yesterday</small></div>
+            <div class="ring" style="--value:70"><span>70%</span></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon purple">♙</div>
+            <div class="stat-copy"><span>TOTAL CUSTOMERS</span><strong>248</strong><small><b>+12</b> this month</small></div>
+            <div class="trend">↗</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon green">₱</div>
+            <div class="stat-copy"><span>PENDING PAYMENTS</span><strong>₱24,580</strong><small><b>8</b> outstanding</small></div>
+            <div class="trend muted">₱</div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel repairs-panel">
+            <div class="panel-header">
+              <div><h2>Repair Overview</h2><p>All active motorcycle repairs</p></div>
+              <button class="text-button" data-page-link="repairs">View all <span>→</span></button>
+            </div>
+            <div class="repair-list" id="repairList">
+              <div class="repair-row" data-search="qaw-1042 ricardo santos honda click 125">
+                <div class="bike-thumb honda"><span>H</span></div>
+                <div class="repair-main"><div class="repair-title"><strong>Honda Click 125</strong><span class="status diagnosing">Diagnosing</span></div><small><b>QAW-1042</b> · Ricardo Santos</small></div>
+                <div class="mechanic"><div class="mini-avatar">JM</div><span>Jun Macias</span></div>
+                <div class="completion"><span>Est. completion</span><strong>Nov 28</strong></div>
+                <button class="row-menu" aria-label="Actions">•••</button>
+              </div>
+              <div class="repair-row" data-search="qaw-1041 maria dela cruz yamaha mio sporty">
+                <div class="bike-thumb yamaha"><span>Y</span></div>
+                <div class="repair-main"><div class="repair-title"><strong>Yamaha Mio Sporty</strong><span class="status progress">In Progress</span></div><small><b>QAW-1041</b> · Maria Dela Cruz</small></div>
+                <div class="mechanic"><div class="mini-avatar alt">AR</div><span>Alex Reyes</span></div>
+                <div class="completion"><span>Est. completion</span><strong>Today</strong></div>
+                <button class="row-menu" aria-label="Actions">•••</button>
+              </div>
+              <div class="repair-row" data-search="qaw-1039 jose villanueva suzuki raider 150">
+                <div class="bike-thumb suzuki"><span>S</span></div>
+                <div class="repair-main"><div class="repair-title"><strong>Suzuki Raider 150</strong><span class="status waiting">Waiting Parts</span></div><small><b>QAW-1039</b> · Jose Villanueva</small></div>
+                <div class="mechanic"><div class="mini-avatar green-avatar">ML</div><span>Mark Lim</span></div>
+                <div class="completion"><span>Est. completion</span><strong>Nov 30</strong></div>
+                <button class="row-menu" aria-label="Actions">•••</button>
+              </div>
+              <div class="repair-row" data-search="qaw-1038 ana flores kawasaki barako 175">
+                <div class="bike-thumb kawasaki"><span>K</span></div>
+                <div class="repair-main"><div class="repair-title"><strong>Kawasaki Barako 175</strong><span class="status quality">Quality Check</span></div><small><b>QAW-1038</b> · Ana Flores</small></div>
+                <div class="mechanic"><div class="mini-avatar">JM</div><span>Jun Macias</span></div>
+                <div class="completion"><span>Est. completion</span><strong>Today</strong></div>
+                <button class="row-menu" aria-label="Actions">•••</button>
+              </div>
+            </div>
+          </article>
+
+          <aside class="panel status-panel">
+            <div class="panel-header">
+              <div><h2>Repair Status</h2><p>Current distribution</p></div>
+              <button class="dots" aria-label="Status options">•••</button>
+            </div>
+            <div class="donut-wrap">
+              <div class="donut"><div><strong>18</strong><span>Total</span></div></div>
+            </div>
+            <div class="status-legend">
+              <div><i class="legend-blue"></i><span>In Progress</span><strong>8</strong></div>
+              <div><i class="legend-orange"></i><span>Diagnosing</span><strong>4</strong></div>
+              <div><i class="legend-purple"></i><span>Waiting Parts</span><strong>3</strong></div>
+              <div><i class="legend-green"></i><span>Quality Check</span><strong>3</strong></div>
+            </div>
+          </aside>
+
+          <article class="panel activity-panel">
+            <div class="panel-header">
+              <div><h2>Recent Activity</h2><p>Latest workshop updates</p></div>
+              <button class="text-button" id="activityRefresh">Refresh</button>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item"><div class="activity-icon blue-icon">✓</div><div><p><strong>Jun Macias</strong> completed quality check</p><small>Honda Click 125 · QAW-1042</small></div><time>12 min ago</time></div>
+              <div class="activity-item"><div class="activity-icon green-icon">₱</div><div><p>Payment received from <strong>Maria Dela Cruz</strong></p><small>₱1,500 · Invoice #INV-0089</small></div><time>34 min ago</time></div>
+              <div class="activity-item"><div class="activity-icon orange-icon">＋</div><div><p>New repair registered</p><small>Kawasaki Barako 175 · QAW-1038</small></div><time>1 hr ago</time></div>
+              <div class="activity-item"><div class="activity-icon purple-icon">⌁</div><div><p><strong>Mark Lim</strong> updated repair status</p><small>Waiting for brake pads</small></div><time>2 hrs ago</time></div>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <div class="content placeholder-page" id="otherPage" hidden>
+        <div class="empty-state">
+          <div class="empty-icon">⌕</div>
+          <h1 id="placeholderTitle">Customers</h1>
+          <p>This module is ready to connect to your records.</p>
+          <button class="primary-button" id="placeholderAction">＋ Add New</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="newRepairModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="repairModalTitle">
+      <div class="modal-header"><div><p class="eyebrow">NEW WORK ORDER</p><h2 id="repairModalTitle">Register a repair</h2></div><button class="modal-close" data-close-modal aria-label="Close">×</button></div>
+      <form id="repairForm">
+        <div class="form-grid">
+          <label>Customer name<input name="customer" required placeholder="e.g. Juan Dela Cruz"></label>
+          <label>Phone number<input name="phone" required placeholder="09XX XXX XXXX"></label>
+          <label>Motorcycle brand<input name="brand" required placeholder="Honda, Yamaha, Suzuki..."></label>
+          <label>Model<input name="model" required placeholder="e.g. Click 125"></label>
+          <label class="full-field">Issue or concern<textarea name="issue" required placeholder="Describe the reported problem"></textarea></label>
+        </div>
+        <div class="modal-actions"><button type="button" class="secondary-button" data-close-modal>Cancel</button><button type="submit" class="primary-button">Create Repair</button></div>
+      </form>
+    </section>
+  </div>
+
+  <div class="modal-backdrop" id="portalModal" hidden>
+    <section class="modal portal-modal" role="dialog" aria-modal="true" aria-labelledby="portalTitle">
+      <div class="modal-header"><div><p class="eyebrow">CUSTOMER PORTAL</p><h2 id="portalTitle">Track your repair</h2></div><button class="modal-close" data-close-portal aria-label="Close">×</button></div>
+      <div class="tracking-search">
+        <label for="trackingInput">Tracking ID</label>
+        <div><input id="trackingInput" placeholder="Enter QAW-####" value="QAW-1042"><button id="trackButton" class="primary-button">Track</button></div>
+      </div>
+      <div class="track-result" id="trackResult">
+        <div class="track-result-head"><div><span>TRACKING ID</span><strong>QAW-1042</strong></div><span class="status diagnosing">Diagnosing</span></div>
+        <div class="track-bike"><div class="bike-thumb honda"><span>H</span></div><div><strong>Honda Click 125</strong><small>Ricardo Santos</small></div></div>
+        <div class="estimate"><span>ESTIMATED COMPLETION</span><strong>November 28, 2026</strong></div>
+        <div class="timeline">
+          <div class="timeline-step done"><i>✓</i><div><strong>Repair registered</strong><small>Nov 26 · 9:14 AM</small></div></div>
+          <div class="timeline-step done"><i>✓</i><div><strong>Initial inspection</strong><small>Nov 26 · 10:30 AM</small></div></div>
+          <div class="timeline-step current"><i>3</i><div><strong>Diagnosis &amp; repair</strong><small>Mechanic: Jun Macias</small></div></div>
+          <div class="timeline-step"><i>4</i><div><strong>Quality check</strong><small>Pending</small></div></div>
+        </div>
+        <div class="balance-row"><span>Payment balance</span><strong>₱1,850.00</strong></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
